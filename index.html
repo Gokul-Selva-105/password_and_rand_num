@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Password Generator & Number Swapper</title>
+  <style>
+   
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    #password {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #swap-numbers button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    body{
+      background-color: rgb(163, 236, 236);
+    }
+
+    #generate-password{
+      border-radius: 15px;
+      width: 300px;
+      height: 45px;
+      background-color: rgb(62, 240, 181);
+    }
+    #generate-password:hover{
+      background-color: rgba(127, 255, 212, 0.842);
+      transition: all 1s ease-in-out;
+    }
+
+    #number1{
+      border-radius: 10px;
+      height: 30px;
+      width: 200px;
+    }
+    #number2{
+      border-radius: 10px;
+      height: 30px;
+      width: 200px;
+      margin-top: 10px;
+    }
+
+    #swap-numbers{
+      margin-top: 100px;
+    }
+    #swap-numbers>button{
+      border-radius: 10px;
+      margin-top: 20px;
+      margin-left: 30px;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Password Generator</h1>
+    <p>Click the button below to generate a random password:</p>
+    <button id="generate-password" onclick="generatePassword()">Generate Password</button>
+    <p id="password"></p>
+  </div>
+
+  <div id="swap-numbers">
+    <h1>Number Swapper</h1>
+    <p>Enter two numbers and click the button to swap them:</p>
+    <label for="number1">Number 1:</label>
+    <input type="number" id="number1" />
+    <br />
+    <label for="number2">Number 2:</label>
+    <input type="number" id="number2" />
+    <br />
+    <button onclick="swapNumbers()">Swap Numbers</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+   
+    function generatePassword() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()';
+      let password = '';
+      for (let i = 0; i < 10; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById('password').innerText = password;
+    }
+
+    function swapNumbers() {
+      const num1 = parseInt(document.getElementById('number1').value);
+      const num2 = parseInt(document.getElementById('number2').value);
+
+      document.getElementById('number1').value = num2;
+      document.getElementById('number2').value = num1;
+
+      document.getElementById('result').innerText = `Swapped numbers: ${num2}, ${num1}`;
+    }
+  </script>
+</body>
+</html>
